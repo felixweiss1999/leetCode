@@ -20,6 +20,6 @@ public:
 };
 
 int main(){
-    printf("%d", Solution::lengthOfLongestSubstring("abcab"));
+    printf("%d\n", Solution::lengthOfLongestSubstring("kufiztfouzfouizgoiuhpkughgdztea6rdutzdfolu"));
     return 0;
 }
