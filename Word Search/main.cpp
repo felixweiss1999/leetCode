@@ -10,11 +10,7 @@ class Solution {
         if(word[0] == board[x][y]){ //not empty, position correct and match found!
             word.remove_prefix(1);
             board[x][y] = '\0'; //mark visited as success
-            std::vector<std::vector<char>> a(board);
-            std::vector<std::vector<char>> b(board);
-            std::vector<std::vector<char>> c(board);
-            std::vector<std::vector<char>> d(board);
-            return traverse_neighbor(a, word, x+1, y) || traverse_neighbor(b, word, x-1, y) || traverse_neighbor(c, word, x, y+1) || traverse_neighbor(d, word, x, y-1);
+            return traverse_neighbor(board, word, x+1, y) || traverse_neighbor(board, word, x-1, y) || traverse_neighbor(board, word, x, y+1) || traverse_neighbor(board, word, x, y-1);
         } 
         return false;//not empty, position correct but not right letter found!
     }
