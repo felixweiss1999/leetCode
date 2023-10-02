@@ -4,17 +4,20 @@
 #include <algorithm>
 
 class Solution {
-    static bool traverse_neighbor(std::vector<std::vector<char>> board, std::string_view word, long unsigned int x, long unsigned int y){
+    static bool traverse_neighbor(std::vector<std::vector<char>>& board, std::string_view word, long unsigned int x, long unsigned int y){
         if(word.empty()) return true;
         //not empty
         if(x >= board.size() || y >= board[0].size()) return false;
         //not empty and position correct
+        bool all = false;
         if(word[0] == board[x][y]){ //not empty, position correct and match found!
             word.remove_prefix(1);
+            char temp = board[x][y];
             board[x][y] = '\0'; //mark visited as success
-            return traverse_neighbor(board, word, x+1, y) || traverse_neighbor(board, word, x-1, y) || traverse_neighbor(board, word, x, y+1) || traverse_neighbor(board, word, x, y-1);
+           all = traverse_neighbor(board, word, x+1, y) || traverse_neighbor(board, word, x-1, y) || traverse_neighbor(board, word, x, y+1) || traverse_neighbor(board, word, x, y-1);
+            board[x][y] = temp;
         } 
-        return false;//not empty, position correct but not right letter found!
+        return all;//not empty, position correct but not right letter found!
     }
 public:
 
@@ -22,8 +25,7 @@ public:
         std::reverse(word.begin(), word.end());
         for(unsigned long int i = 0; i < board.size(); i++)
             for(unsigned long int j = 0; j < board[i].size(); j++){
-                std::vector<std::vector<char>> local_board(board);
-                if(traverse_neighbor(local_board, word, i, j))
+                if(traverse_neighbor(board, word, i, j))
                     return true;
             }
         return false;
