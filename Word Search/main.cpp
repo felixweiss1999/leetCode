@@ -1,6 +1,8 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <algorithm>
+
 class Solution {
     static bool traverse_neighbor(std::vector<std::vector<char>> board, std::string_view word, long unsigned int x, long unsigned int y){
         if(word.empty()) return true;
@@ -16,7 +18,8 @@ class Solution {
     }
 public:
 
-    static bool exist(std::vector<std::vector<char>>& board, std::string_view word) {
+    static bool exist(std::vector<std::vector<char>>& board, std::string word) {
+        std::reverse(word.begin(), word.end());
         for(unsigned long int i = 0; i < board.size(); i++)
             for(unsigned long int j = 0; j < board[i].size(); j++){
                 std::vector<std::vector<char>> local_board(board);
