@@ -15,7 +15,7 @@ public:
             betterSolution(test);
         }
     }
-    int linearSolution(const std::vector<int>& nums){
+    int linearSolution(const std::vector<int>& nums){ //wrong!!
         Felix::Timer _t("linearSolution");
         auto forward_it = nums.begin();
         auto reverse_it = nums.end();
