@@ -15,7 +15,7 @@
                 "-Wextra",
                 "-Wconversion",
                 "-Wsign-conversion",
-                "-Werror",
+                //"-Werror",
                 "-pedantic-errors"
             ],
             "options": {
